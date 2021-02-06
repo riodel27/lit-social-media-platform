@@ -20,9 +20,9 @@ const AllMessages: React.FC = () => {
       socket.init();
       socket.connect(REACT_APP_API_DEFAULT_USER!);
 
-      const observerbale = socket.onMessage();
+      const observable = socket.onMessage();
 
-      observerbale.subscribe((newMessage: any) => {
+      observable.subscribe((newMessage: any) => {
          const currentMessages = messages || remoteMessages;
 
          if (currentMessages && currentMessages.length) {
