@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { List, Avatar } from 'antd';
 import _ from 'lodash';
+import { useHistory } from 'react-router-dom';
 
 import useUserMessages from 'hooks/messages/query/useUserMessages';
 import DefaultAvatar from 'assets/images/generic-user-avatar.png';
@@ -9,6 +10,7 @@ import { SocketContext } from 'context/socket';
 const { REACT_APP_API_DEFAULT_USER } = process.env;
 
 const AllMessages: React.FC = () => {
+   const history = useHistory();
    //Queries
    const { data: remoteMessages } = useUserMessages();
    const [messages, setMessages] = useState([]);
@@ -50,7 +52,18 @@ const AllMessages: React.FC = () => {
             itemLayout="horizontal"
             dataSource={messages}
             renderItem={(message: any) => (
-               <List.Item>
+               <List.Item
+                  onClick={() =>
+                     history.push({
+                        pathname: '/chat',
+                        state: {
+                           recipient:
+                              message.from._id === REACT_APP_API_DEFAULT_USER
+                                 ? message.to
+                                 : message.from
+                        }
+                     })
+                  }>
                   <List.Item.Meta
                      avatar={
                         <Avatar
@@ -81,7 +94,6 @@ const AllMessages: React.FC = () => {
                </List.Item>
             )}
          />
-         ,
       </>
    );
 };

@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import './App.css';
 import { Messages } from 'screens/Messages';
+import { Chat } from 'screens/Chat';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ function App() {
                   />
                   <Route exact path="/sign-in" component={() => <div>SignIn</div>} is_private />
                   <Route exact path="/messages" component={Messages} />
+                  <Route exact path="/chat" component={Chat} />
                </Switch>
             </Router>
             <ReactQueryDevtools initialIsOpen={false} />

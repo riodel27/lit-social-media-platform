@@ -22,4 +22,16 @@ const getUserFavoriteMessages = () => {
    });
 };
 
-export default { getUserMessages, getUserFavoriteMessages };
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+const getMessageConversations = (params: any) => {
+   const headers = {
+      Authorization: `Bearer ${REACT_APP_API_DEFAULT_TOKEN}`
+   };
+
+   return axiosInstance.get(`/v1/messages`, {
+      params,
+      headers
+   });
+};
+
+export default { getUserMessages, getUserFavoriteMessages, getMessageConversations };
