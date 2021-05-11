@@ -27,7 +27,16 @@ function App() {
                         </div>
                      )}
                   />
-                  <Route exact path="/sign-in" component={() => <div>SignIn</div>} is_private />
+                  <Route
+                     exact
+                     path="/sign-in"
+                     component={() => (
+                        <div>
+                           <p className="text-xs text-green-600">Sign in</p>
+                        </div>
+                     )}
+                     is_private
+                  />
                   <Route exact path="/messages" component={Messages} />
                </Switch>
             </Router>
