@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import './App.css';
 import { Messages } from 'screens/Messages';
+import { SignIn } from 'screens/SignIn';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -27,16 +28,7 @@ function App() {
                         </div>
                      )}
                   />
-                  <Route
-                     exact
-                     path="/sign-in"
-                     component={() => (
-                        <div>
-                           <p className="text-xs text-green-600">Sign in</p>
-                        </div>
-                     )}
-                     is_private
-                  />
+                  <Route exact path="/sign-in" component={SignIn} is_private />
                   <Route exact path="/messages" component={Messages} />
                </Switch>
             </Router>
